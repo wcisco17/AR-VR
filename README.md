@@ -4,8 +4,8 @@ This repository contains code, screenshots and updates of the Augmented Reality 
 # Getting Started with Development
 1. Clone this repo to your desktop and extract files
 2. Open command line and navigate to the root folder using `cd` commands 
-3. `npm install`
-4. `npm start`
+3. First install react native cli using `npm install -g react-native-cli` and then install dependancies using `npm install`
+4. Run app server using `npm start`
 5. Download viro media player and update AR core if your phone does not have it
 6. get your ip address of the computer on the network and in the side pannel where it says testbed enter it there
 7. Click Go! and allow all permsions 
