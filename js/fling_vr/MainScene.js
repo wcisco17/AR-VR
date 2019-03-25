@@ -37,7 +37,7 @@ export default class MainScene extends Component {
         <Viro360Image source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
 
         <ViroImage
-          position={polarToCartesian([-5, 30, -40])} source={weworkImage} scale={[.2, .2, .2]}
+          position={[0, 0, -5]} source={weworkImage} scale={[.2, .2, .2]}
           opacity={0.0} onClick={this._onTitleClicked}
           animation={{
             name : "showTitleAnimation",

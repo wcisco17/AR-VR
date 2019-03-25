@@ -34,7 +34,7 @@ var arScenes = {
 
 
 
-var showARScene =  true;
+var showARScene =  false;
 
 
 var ViroCodeSamplesSceneNavigator = createReactClass({

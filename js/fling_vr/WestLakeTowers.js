@@ -87,7 +87,7 @@ export default class OfficeTourSplashScene extends Component {
 
         <InfoElement content={slutWindowCard} contentCardScale={[3.67,4,1]} position={polarToCartesian([-5, 30, -40])}/>
         <InfoElement content={monorailInfoCard} contentCardScale={[3.67,4,1]} position={polarToCartesian([-5, 100, -50])}/>
-        <InfoElement content={statueWindowCard} contentCardScale={[10,3,2]} position={polarToCartesian([-5, 277, -50])}/>
+        <InfoElement content={statueWindowCard} contentCardScale={[3.67,4,1]} position={polarToCartesian([-5, 277, -50])}/>
         <ViroImage
           scale={[1, 1, 1]}
           position={[0, -3.5, 0]}
