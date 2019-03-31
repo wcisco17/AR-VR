@@ -1,25 +1,17 @@
-
 'use strict';
-import React, { Component } from 'react';
-import {StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
+import React, { Fragment, PureComponent } from 'react';
+import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
+import { Viro360Image, ViroAnimations, ViroImage, ViroScene } from 'react-viro';
 
-import {
-  ViroScene,
-  Viro360Image,
-  ViroImage,
-  ViroAnimations,
-  ViroNode,
-  ViroText
-} from 'react-viro';
+const westLakeTowersScene = require('./WestLakeTowers');
+const backgroundImage = require('./res/airport.jpg');
+const weworkImage = require('./res/fling.png');
 
-
-var westLakeTowersScene = require('./WestLakeTowers');
-var backgroundImage = require('./res/airport.jpg');
-var weworkImage = require('./res/fling.png');
-
-export default class MainScene extends Component {
-  constructor() {
-    super();
+export default class MainScene extends PureComponent {
+  constructor(props) {
+    super(props);
 
     // set initial state
     this.state = {
@@ -32,19 +24,27 @@ export default class MainScene extends Component {
   }
 
   render() {
+      const { onShow, onClose } = this.props
     return (
-      <ViroScene style={styles.container}>
-        <Viro360Image source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
-
-        <ViroImage
-          position={[0, 0, -5]} source={weworkImage} scale={[.2, .2, .2]}
-          opacity={0.0} onClick={this._onTitleClicked}
-          animation={{
-            name : "showTitleAnimation",
-            run : this.state.runShowTitleAnimation,
-            loop : false,
-          }} />
-      </ViroScene>
+        <Fragment>
+            {onShow && (
+                <Fragment>
+                    <ViroScene style={styles.container}>
+                    <Viro360Image source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
+                    
+                    <ViroImage
+                    position={[0, 0, -5]} source={weworkImage} scale={[.2, .2, .2]}
+                    opacity={0.0} onClick={this._onTitleClicked}
+                    animation={{
+                        name : "showTitleAnimation",
+                        run : this.state.runShowTitleAnimation,
+                        loop : false,
+                    }} />
+                    </ViroScene>
+                    <Button title="Close" onPress={() => onClose} />
+                </Fragment>
+            )}
+        </Fragment>
     );
   }
 
@@ -86,5 +86,11 @@ var styles = StyleSheet.create({
 ViroAnimations.registerAnimations({
     showTitleAnimation: {properties:{scaleX:2, scaleY:2, scaleZ:2, opacity:1.0}, easing:"PowerDecel", duration:1000},
 });
+
+
+MainScene.propTypes = {
+    onShow: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+}
 
 module.exports = MainScene;
